@@ -1,8 +1,45 @@
 # Digital Gram Panchayat
 
+[![Python Version](https://img.shields.io/badge/Python-3.9%2B-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
+[![Flask Version](https://img.shields.io/badge/Flask-3.0.3-black.svg?logo=flask&logoColor=white)](https://palletsprojects.com/p/flask/)
+[![Database](https://img.shields.io/badge/Database-SQLite-003B57.svg?logo=sqlite&logoColor=white)](https://www.sqlite.org/)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3.svg?logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
+[![License](https://img.shields.io/badge/License-Educational-green.svg)](#23-license)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/viraj24bce10396/Digital-Gram-Panchayat-Python/pulls)
+
 A smart and practical e-governance solution designed to digitize local public service delivery and improve the efficiency of village-level administration. The project enables citizens to apply for essential civic services, track their requests, and interact with local government systems through a web-based portal. It also provides role-based access for staff and administrators to review, process, and manage applications in a structured and transparent manner.
 
 This project is developed as a real-world academic solution that demonstrates the use of web technologies for digital governance, citizen service management, and village administration modernization.
+
+---
+
+## Table of Contents
+
+- [1. Project Overview](#1-project-overview)
+- [2. Motivation and Importance](#2-motivation-and-importance)
+- [3. Problem Statement](#3-problem-statement)
+- [4. Objectives](#4-objectives)
+- [5. Scope of the Project](#5-scope-of-the-project)
+- [6. Target Users](#6-target-users)
+- [7. Core Functional Modules](#7-core-functional-modules)
+- [8. System Workflow](#8-system-workflow)
+- [9. Role-Based Access Design](#9-role-based-access-design)
+- [10. Business Logic and Validation](#10-business-logic-and-validation)
+- [11. Technical Architecture](#11-technical-architecture)
+- [12. Project Modules](#12-project-modules)
+- [13. Data Model and Entities](#13-data-model-and-entities)
+- [14. Security Considerations](#14-security-considerations)
+- [15. User Experience and Interface Design](#15-user-experience-and-interface-design)
+- [16. Social Impact](#16-social-impact)
+- [17. Benefits of the Project](#17-benefits-of-the-project)
+- [18. Challenges Encountered](#18-challenges-encountered)
+- [19. Future Enhancements](#19-future-enhancements)
+- [20. Conclusion](#20-conclusion)
+- [21. Final Statement](#21-final-statement)
+- [22. Acknowledgements](#22-acknowledgements)
+- [23. License](#23-license)
+- [24. Project Status](#24-project-status)
+- [25. Author](#25-author)
 
 ---
 
