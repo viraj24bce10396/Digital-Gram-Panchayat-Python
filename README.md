@@ -26,6 +26,8 @@ This project is developed as a real-world academic solution that demonstrates th
 - [9. Role-Based Access Design](#9-role-based-access-design)
 - [10. Business Logic and Validation](#10-business-logic-and-validation)
 - [11. Technical Architecture](#11-technical-architecture)
+- [Installation & Setup Guide](#installation--setup-guide)
+- [Default Login Credentials](#default-login-credentials)
 - [12. Project Modules](#12-project-modules)
 - [13. Data Model and Entities](#13-data-model-and-entities)
 - [14. Security Considerations](#14-security-considerations)
@@ -227,6 +229,95 @@ The application follows a standard Flask-based architecture:
 - Form Handling: WTForms
 
 This architecture allows the project to remain modular, maintainable, and suitable for academic demonstration and future extension.
+
+---
+
+## Installation & Setup Guide
+
+Follow these instructions to set up the Digital Gram Panchayat portal locally on your development machine.
+
+### Prerequisites
+
+Ensure you have the following installed:
+- **Python**: Version 3.9, 3.10, or 3.11 ([Download Python](https://www.python.org/downloads/))
+- **Git**: Version control client ([Download Git](https://git-scm.com/))
+- **pip**: Python package manager (included with standard Python installations)
+
+---
+
+### Step-by-Step Quickstart
+
+#### 1. Clone the Repository
+```bash
+git clone https://github.com/viraj24bce10396/Digital-Gram-Panchayat-Python.git
+cd Digital-Gram-Panchayat-Python
+```
+
+#### 2. Create and Activate a Virtual Environment
+- **On Windows (PowerShell / Command Prompt):**
+  ```powershell
+  python -m venv venv
+  .\venv\Scripts\activate
+  ```
+- **On macOS / Linux:**
+  ```bash
+  python3 -m venv venv
+  source venv/bin/activate
+  ```
+
+#### 3. Install Required Dependencies
+Install the pinned libraries listed in `requirements.txt`:
+```bash
+pip install -r requirements.txt
+```
+
+#### 4. Configure Environment Variables
+Copy `.env.example` to create your local `.env` configuration file:
+- **On Windows (PowerShell):**
+  ```powershell
+  Copy-Item .env.example .env
+  ```
+- **On macOS / Linux:**
+  ```bash
+  cp .env.example .env
+  ```
+
+Configurable parameters:
+| Key | Default Value | Description |
+|---|---|---|
+| `FLASK_APP` | `app.py` | Flask application entrypoint |
+| `FLASK_DEBUG` | `True` | Hot-reloading and development debugging mode |
+| `SECRET_KEY` | `change-this-secret-key` | Secret key for session security and CSRF protection |
+| `DATABASE_URL` | `sqlite:///gram_panchayat.db` | SQLite database file location |
+
+#### 5. Run the Application
+Start the Flask development server:
+```bash
+python app.py
+```
+> **Note:** On first startup, the database tables are automatically initialized, the default administrator account is seeded, and standard public services are populated.
+
+#### 6. Access the Application
+Open your web browser and navigate to:
+```
+http://127.0.0.1:5000
+```
+or
+```
+http://localhost:5000
+```
+
+---
+
+### Default Login Credentials
+
+For testing and demonstration, use the pre-configured administrator account or register as a citizen:
+
+| Role | Email / Identifier | Password | Access Capabilities |
+|---|---|---|---|
+| **Administrator** | `admin@panchayat.in` | `Admin@123` | Full system access, service catalog creation, and application management |
+| **Citizen** | *Self-register via portal* | *User defined* | Browse public catalog, submit service requests, and track status |
+| **Staff Member** | *Configured by admin* | *User defined* | Review pending applications, verify documents, and approve/reject |
 
 ---
 
