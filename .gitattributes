@@ -1,0 +1,5 @@
+# Language detection overrides for GitHub Linguist
+# Exclude HTML presentation templates so Python is the primary language
+*.html linguist-detectable=false
+*.htm linguist-detectable=false
+templates/** linguist-detectable=false

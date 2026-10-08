@@ -403,6 +403,7 @@ Digital-Gram-Panchayat-Python/
 │   └── whatsapp-summary.md      # Concise project summary & viva notes
 │
 ├── .env.example                 # Environment configuration template
+├── .gitattributes               # Linguist language statistics overrides
 ├── .gitignore                   # Git exclusion rules (venv, *.db, pycache)
 ├── app.py                       # Main Flask application, routes & business logic
 ├── config.py                    # Application configuration and secret key setup
