@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="hero-section py-5">
+    <div class="row align-items-center">
+        <div class="col-lg-6">
+            <h1 class="display-4 fw-bold mb-3">Digital Gram Panchayat</h1>
+            <p class="lead mb-4">
+                Empowering rural communities through transparent digital service delivery, citizen requests,
+                and fast administrative processing.
+            </p>
+            <div class="d-flex gap-2 flex-wrap">
+                <a href="{{ url_for('login') }}" class="btn btn-success btn-lg">Login</a>
+                <a href="{{ url_for('register') }}" class="btn btn-outline-success btn-lg">Register</a>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="bi bi-file-earmark-text"></i>
+                    <h5>Certificates</h5>
+                    <p>Fast online requests</p>
+                </div>
+                <div class="stat-card">
+                    <i class="bi bi-people"></i>
+                    <h5>Citizen Portal</h5>
+                    <p>Transparent services</p>
+                </div>
+                <div class="stat-card">
+                    <i class="bi bi-shield-check"></i>
+                    <h5>Secure Access</h5>
+                    <p>Role-based approval</p>
+                </div>
+                <div class="stat-card">
+                    <i class="bi bi-graph-up-arrow"></i>
+                    <h5>Reports</h5>
+                    <p>Smart village insights</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

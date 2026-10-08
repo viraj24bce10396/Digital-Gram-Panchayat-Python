@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}{{ service.name }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow border-0 rounded-4 p-4">
+            <h2>{{ service.name }}</h2>
+            <p class="text-muted">{{ service.description }}</p>
+            <ul class="list-group list-group-flush my-3">
+                <li class="list-group-item"><strong>Category:</strong> {{ service.category.title() }}</li>
+                <li class="list-group-item"><strong>Processing days:</strong> {{ service.processing_days }}</li>
+                <li class="list-group-item"><strong>Required docs:</strong> {{ service.required_documents }}</li>
+            </ul>
+
+            <form method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Applicant Name</label>
+                    <input type="text" name="applicant_name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Phone Number</label>
+                    <input type="text" name="phone" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Purpose</label>
+                    <input type="text" name="purpose" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Additional Details</label>
+                    <textarea name="details" class="form-control" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Submit Application</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Add Service{% endblock %}
+
+{% block content %}
+<div class="card shadow border-0 rounded-4 p-4">
+    <h3>Add New Service</h3>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="row g-3">
+            <div class="col-md-6">
+                {{ form.name.label(class="form-label") }}
+                {{ form.name(class="form-control") }}
+            </div>
+            <div class="col-md-6">
+                {{ form.category.label(class="form-label") }}
+                {{ form.category(class="form-select") }}
+            </div>
+            <div class="col-md-6">
+                {{ form.icon.label(class="form-label") }}
+                {{ form.icon(class="form-control") }}
+            </div>
+            <div class="col-md-6">
+                {{ form.fee.label(class="form-label") }}
+                {{ form.fee(class="form-control") }}
+            </div>
+            <div class="col-md-6">
+                {{ form.processing_days.label(class="form-label") }}
+                {{ form.processing_days(class="form-control") }}
+            </div>
+            <div class="col-md-6">
+                {{ form.is_active.label(class="form-label") }}
+                {{ form.is_active(class="form-check-input mt-2") }}
+            </div>
+            <div class="col-12">
+                {{ form.description.label(class="form-label") }}
+                {{ form.description(class="form-control", rows=5) }}
+            </div>
+            <div class="col-12">
+                {{ form.required_documents.label(class="form-label") }}
+                {{ form.required_documents(class="form-control", rows=3) }}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success mt-4">Add Service</button>
+    </form>
+</div>
+{% endblock %}

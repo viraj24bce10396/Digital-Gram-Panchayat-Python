@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="card shadow border-0 rounded-4 p-4">
+    <h3>My Profile</h3>
+    <div class="row mt-4">
+        <div class="col-md-4 text-center">
+            <div class="profile-avatar">
+                <i class="bi bi-person-circle"></i>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <p><strong>Name:</strong> {{ user.full_name }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Phone:</strong> {{ user.phone }}</p>
+            <p><strong>Address:</strong> {{ user.address }}</p>
+            <p><strong>City:</strong> {{ user.city }}</p>
+            <p><strong>Pincode:</strong> {{ user.pincode }}</p>
+            <p><strong>Role:</strong> {{ user.role.title() }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

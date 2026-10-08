@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Review Application{% endblock %}
+
+{% block content %}
+<div class="card shadow border-0 rounded-4 p-4">
+    <h3>Review Application: {{ application.application_number }}</h3>
+    <div class="row g-3 mt-3">
+        <div class="col-md-6">
+            <p><strong>Applicant:</strong> {{ application.user.full_name }}</p>
+            <p><strong>Service:</strong> {{ application.service.name }}</p>
+            <p><strong>Status:</strong> {{ application.status.title() }}</p>
+        </div>
+        <div class="col-md-6">
+            <p><strong>Submitted:</strong> {{ application.submitted_at.strftime('%d %b %Y') }}</p>
+            <p><strong>Application Data:</strong></p>
+            {% for key, value in form_data.items() %}
+                <p><small>{{ key }}: {{ value }}</small></p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <form method="POST" class="mt-4">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.status.label(class="form-label") }}
+            {{ form.status(class="form-select") }}
+        </div>
+        <div class="mb-3">
+            {{ form.approval_notes.label(class="form-label") }}
+            {{ form.approval_notes(class="form-control", rows=4) }}
+        </div>
+        <button type="submit" class="btn btn-success">Save Review</button>
+    </form>
+</div>
+{% endblock %}

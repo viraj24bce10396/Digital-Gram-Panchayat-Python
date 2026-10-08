@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Staff Dashboard{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Staff Dashboard</h2>
+<div class="row g-4 mb-4">
+    <div class="col-md-3">
+        <div class="card stat-box alt-1">
+            <div class="card-body">
+                <h6>Total Requests</h6>
+                <h3>{{ total_applications }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card stat-box alt-2">
+            <div class="card-body">
+                <h6>Pending</h6>
+                <h3>{{ pending_count }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card stat-box alt-3">
+            <div class="card-body">
+                <h6>Approved</h6>
+                <h3>{{ approved_count }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card stat-box">
+            <div class="card-body">
+                <h6>Rejected</h6>
+                <h3>{{ rejected_count }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow border-0 rounded-4 p-4">
+    <h4 class="mb-3">Applications to Review</h4>
+    <div class="table-responsive">
+        <table class="table table-striped align-middle">
+            <thead>
+                <tr>
+                    <th>Applicant</th>
+                    <th>Service</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for app in applications %}
+                <tr>
+                    <td>{{ app.user.full_name }}</td>
+                    <td>{{ app.service.name }}</td>
+                    <td>
+                        {% if app.status == 'approved' %}
+                            <span class="badge bg-success">Approved</span>
+                        {% elif app.status == 'pending' %}
+                            <span class="badge bg-warning text-dark">Pending</span>
+                        {% elif app.status == 'rejected' %}
+                            <span class="badge bg-danger">Rejected</span>
+                        {% else %}
+                            <span class="badge bg-secondary">{{ app.status.title() }}</span>
+                        {% endif %}
+                    </td>
+                    <td><a href="{{ url_for('review_application', application_id=app.id) }}" class="btn btn-sm btn-outline-success">Review</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

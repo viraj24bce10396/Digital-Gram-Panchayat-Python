@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}My Applications{% endblock %}
+
+{% block content %}
+<div class="card shadow border-0 rounded-4 p-4">
+    <h3 class="mb-4">My Applications</h3>
+    {% if applications %}
+    <div class="table-responsive">
+        <table class="table table-striped align-middle">
+            <thead>
+                <tr>
+                    <th>Application No.</th>
+                    <th>Service</th>
+                    <th>Status</th>
+                    <th>Submitted</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for app in applications %}
+                <tr>
+                    <td>{{ app.application_number }}</td>
+                    <td>{{ app.service.name }}</td>
+                    <td>
+                        {% if app.status == 'approved' %}
+                            <span class="badge bg-success">Approved</span>
+                        {% elif app.status == 'pending' %}
+                            <span class="badge bg-warning text-dark">Pending</span>
+                        {% elif app.status == 'rejected' %}
+                            <span class="badge bg-danger">Rejected</span>
+                        {% else %}
+                            <span class="badge bg-info text-dark">{{ app.status.title() }}</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ app.submitted_at.strftime('%d %b %Y') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="alert alert-info">No applications submitted yet.</div>
+    {% endif %}
+</div>
+{% endblock %}
