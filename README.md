@@ -28,7 +28,11 @@ This project is developed as a real-world academic solution that demonstrates th
 - [11. Technical Architecture](#11-technical-architecture)
 - [Installation & Setup Guide](#installation--setup-guide)
 - [Default Login Credentials](#default-login-credentials)
-- [12. Project Modules](#12-project-modules)
+- [12. Project Structure & Modules](#12-project-structure--modules)
+  - [12.1 Directory Structure](#121-directory-structure)
+  - [12.2 Application Source Files](#122-application-source-files)
+  - [12.3 Application Routes & Endpoints](#123-application-routes--endpoints)
+  - [12.4 Pre-configured Public Services Catalog](#124-pre-configured-public-services-catalog)
 - [13. Data Model and Entities](#13-data-model-and-entities)
 - [14. Security Considerations](#14-security-considerations)
 - [15. User Experience and Interface Design](#15-user-experience-and-interface-design)
@@ -321,25 +325,91 @@ For testing and demonstration, use the pre-configured administrator account or r
 
 ---
 
-## 12. Project Modules
+## 12. Project Structure & Modules
 
-### 12.1 app.py
-This is the main application file. It creates the Flask app, registers routes, implements authentication logic, creates default admin accounts, and runs the web server.
+### 12.1 Directory Structure
 
-### 12.2 config.py
-This file contains configuration settings for the application, including environment-related values and security configuration.
+The project follows a clean, modular Model-View-Template (MVT) architecture:
 
-### 12.3 forms.py
-This file contains all form classes used in user registration, login, profile updates, service creation, and application review.
+```text
+Digital-Gram-Panchayat-Python/
+│
+├── static/                      # Static web assets
+│   ├── css/
+│   │   └── style.css            # Custom responsive styling and theme overrides
+│   └── js/
+│       └── script.js            # Client-side form interaction scripts
+│
+├── templates/                   # Jinja2 presentation templates
+│   ├── base.html                # Master layout (Bootstrap 5 navigation & footer)
+│   ├── home.html                # Public landing page with service highlights
+│   ├── login.html               # Secure role-based login portal
+│   ├── register.html            # Citizen onboarding registration form
+│   ├── dashboard.html           # Citizen dashboard with stats and recent requests
+│   ├── services.html            # Catalog of all available civic services
+│   ├── service_detail.html      # Individual service application submission form
+│   ├── my_applications.html     # Application status tracking list
+│   ├── profile.html             # User profile information & details update
+│   ├── staff_dashboard.html     # Staff workspace to review citizen submissions
+│   ├── review_application.html  # Status update and approval notes form
+│   ├── admin_dashboard.html     # System overview metrics and management
+│   ├── add_service.html         # Administrator interface to create new services
+│   ├── 404.html                 # Custom Not Found error page
+│   └── 500.html                 # Custom Internal Server Error page
+│
+├── docs/                        # Presentation & academic reference documents
+│   ├── ppt-outline.md           # Presentation slide deck outline
+│   └── whatsapp-summary.md      # Concise project summary & viva notes
+│
+├── .env.example                 # Environment configuration template
+├── .gitignore                   # Git exclusion rules (venv, *.db, pycache)
+├── app.py                       # Main Flask application, routes & business logic
+├── config.py                    # Application configuration and secret key setup
+├── forms.py                     # WTForms definitions and input validation rules
+├── models.py                    # SQLAlchemy database schema models & relationships
+├── requirements.txt             # Pinned Python package dependencies
+└── README.md                    # Project documentation
+```
 
-### 12.4 models.py
-This file contains the database models such as User, Service, Application, Notification, and administrative entities.
+### 12.2 Application Source Files
 
-### 12.5 templates/
-This folder contains all HTML pages for the application interface, including the home page, login, registration, dashboard, review pages, and admin views.
+- **`app.py`**: The application entry point. Configures the Flask application, integrates Flask-Login and SQLAlchemy, sets up role-based route decorators (`@role_required`), creates seed records, and defines route handlers.
+- **`config.py`**: Centralized configuration management using environment variables with safe defaults (secret key, database URI, and file upload paths).
+- **`forms.py`**: WTForms form definitions providing server-side validation for registration, login, profile editing, service creation, and application approval.
+- **`models.py`**: Database schemas using Flask-SQLAlchemy including `User`, `Service`, `Application`, `Notification`, and `AuditLog` models with secure password hashing (`Werkzeug`).
+- **`templates/`**: Modular HTML files using Jinja2 inheritance (`base.html`) and Bootstrap 5 components for consistent design.
+- **`static/`**: Custom stylesheets and JavaScript to ensure responsive mobile and desktop presentation.
 
-### 12.6 static/
-This folder stores CSS and JavaScript assets used for styling and interactivity.
+### 12.3 Application Routes & Endpoints
+
+| Route | Methods | Access Level | Description |
+|---|---|---|---|
+| `/` | `GET` | Public | Landing page with overview of panchayat digital services |
+| `/login` | `GET`, `POST` | Public | Authentication portal with role-based redirection |
+| `/register` | `GET`, `POST` | Public | Citizen self-registration with form validation |
+| `/logout` | `GET` | Authenticated | Clears user session and logs out |
+| `/dashboard` | `GET` | Citizen | Citizen portal showing recent applications & summary counters |
+| `/services` | `GET` | Public / Citizen | Browse all active civic and welfare services |
+| `/service/<id>` | `GET`, `POST` | Citizen | Service details and application submission form |
+| `/my-applications` | `GET` | Citizen | Status tracker for citizen's submitted applications |
+| `/profile` | `GET`, `POST` | Authenticated | View and update user profile & contact information |
+| `/staff/dashboard` | `GET` | Staff, Admin | Review pending citizen applications grouped by status |
+| `/staff/application/<id>` | `GET`, `POST` | Staff, Admin | Review application details, set status (Approved/Rejected), add notes |
+| `/admin/dashboard` | `GET` | Admin | Administration overview, system metrics, and audit logs |
+| `/admin/services` | `GET`, `POST` | Admin | Management interface to create and publish new services |
+
+### 12.4 Pre-configured Public Services Catalog
+
+The system automatically initializes standard public services upon first startup:
+
+| Service Name | Category | Processing Time | Fee | Required Documents |
+|---|---|---|---|---|
+| **Birth Certificate** | Certificates | 5 Days | Free (₹0.00) | Birth proof, Address proof, ID proof |
+| **Income Certificate** | Certificates | 7 Days | Free (₹0.00) | Income details, ID proof, Address proof |
+| **Caste Certificate** | Certificates | 8 Days | Free (₹0.00) | Caste proof, Address proof, ID proof |
+| **Marriage Certificate** | Documents | 6 Days | Free (₹0.00) | Marriage proof, ID proof, Address proof |
+| **Residence Certificate** | Documents | 4 Days | Free (₹0.00) | Address proof, Utility bill, ID proof |
+| **Senior Citizen Benefits** | Welfare | 10 Days | Free (₹0.00) | Age proof, Pension papers, ID proof |
 
 ---
 
