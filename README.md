@@ -166,43 +166,83 @@ Dashboards provide a summary of system activity, total users, total applications
 
 ## 8. System Workflow
 
-The system follows a basic but effective operational workflow:
+The system follows a streamlined operational workflow for public administration:
 
-1. User registers and logs into the platform.
-2. User browses the available public services.
-3. User submits a service request with required details.
-4. The system creates and saves the application record.
-5. Staff/admin reviews the request.
-6. The request status is updated.
-7. The user can view updates from their dashboard.
+```mermaid
+flowchart TD
+    A([Citizen Logs In]) --> B[Browse Available Services]
+    B --> C[Fill Application Form & Submit]
+    C --> D[(Save Application Record: Status 'Pending')]
+    D --> E[System Generates Tracking Number]
+    E --> F[Staff / Admin Accesses Review Queue]
+    F --> G{Review & Verification}
+    G -- "Verify Details & Satisfied" --> H[Mark as Approved]
+    G -- "Discrepancy / Incomplete" --> I[Mark as Rejected]
+    H --> J[Add Processing Notes & Timestamp]
+    I --> J
+    J --> K[(Update Database Record)]
+    K --> L[Generate System Notification]
+    L --> M([Citizen Views Updated Status on Dashboard])
+```
 
-This creates a complete Record → Review → Update → Monitor cycle for public administration.
+1. **User registers and logs into the platform.**
+2. **User browses the available public services.**
+3. **User submits a service request with required details.**
+4. **The system creates and saves the application record** with a unique tracking ID.
+5. **Staff/admin reviews the request and attached details.**
+6. **The request status is updated** (Approved / Rejected) alongside administrative remarks.
+7. **The citizen views updates and notifications** directly from their personal dashboard.
+
+This creates a transparent **Record → Review → Update → Monitor** cycle for public administration.
 
 ---
 
 ## 9. Role-Based Access Design
 
-A major strength of the project is its role-based authorization system.
+A major strength of the project is its strict role-based authorization system:
+
+```mermaid
+flowchart LR
+    subgraph Roles ["User Roles & Privileges"]
+        direction TB
+        subgraph AdminRole ["Administrator"]
+            A1["Manage Services"]
+            A2["View Analytics & Audit Logs"]
+            A3["Supervise Staff & Applications"]
+        end
+        subgraph StaffRole ["Staff / Panchayat Worker"]
+            S1["Review Incoming Requests"]
+            S2["Approve / Reject Applications"]
+            S3["Attach Review Remarks"]
+        end
+        subgraph CitizenRole ["Citizen"]
+            C1["Secure Registration & Login"]
+            C2["Submit Public Service Applications"]
+            C3["Real-time Status Tracking"]
+        end
+    end
+```
 
 ### Citizen Role
-- Registration and login
-- Request service
-- Track own application status
-- View profile and service-related updates
+- Registration and secure authentication
+- Browse active public service catalog
+- Submit service requests with personal details
+- Track individual application statuses and read review remarks
+- View and update profile information
 
 ### Staff Role
-- Review all citizen requests
-- Update status of applications
-- Add notes for administrators and users
-- Monitor pending work
+- Review all submitted citizen requests
+- Update application statuses (`pending`, `approved`, `rejected`)
+- Attach administrative notes and processing explanations
+- Monitor workflow queues and pending tasks
 
 ### Admin Role
-- Manage service list
-- View system statistics
-- Oversee admin workflows
-- Monitor overall activity on the platform
+- Create, update, and manage public service offerings
+- View high-level system statistics and usage counters
+- Review audit logs and track platform activity
+- Supervise all administrative and staff workflows
 
-This design ensures proper access control and prevents unauthorized actions.
+This design ensures proper access control, principle of least privilege, and prevents unauthorized actions.
 
 ---
 
