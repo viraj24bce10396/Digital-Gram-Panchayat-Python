@@ -352,6 +352,25 @@ or
 http://localhost:5000
 ```
 
+#### 7. CLI Management & Automated Testing (Optional)
+The project includes dedicated administrative CLI utilities and an automated test suite:
+- **Run System Diagnostics & Health Check:**
+  ```bash
+  python manage.py health-check
+  ```
+- **View Platform Statistics:**
+  ```bash
+  python manage.py stats
+  ```
+- **Provision Staff or Admin Account via CLI:**
+  ```bash
+  python manage.py create-user --name "Staff Member" --email "staff@panchayat.in" --password "Staff@123" --role staff
+  ```
+- **Run Automated Test Suite:**
+  ```bash
+  python -m unittest discover tests
+  ```
+
 ---
 
 ### Default Login Credentials
@@ -402,12 +421,17 @@ Digital-Gram-Panchayat-Python/
 │   ├── ppt-outline.md           # Presentation slide deck outline
 │   └── whatsapp-summary.md      # Concise project summary & viva notes
 │
+├── tests/                       # Automated unit and integration test suite
+│   ├── __init__.py
+│   └── test_app.py              # Route, authentication & model test cases
+│
 ├── .env.example                 # Environment configuration template
 ├── .gitattributes               # Linguist language statistics overrides
 ├── .gitignore                   # Git exclusion rules (venv, *.db, pycache)
 ├── app.py                       # Main Flask application, routes & business logic
 ├── config.py                    # Application configuration and secret key setup
 ├── forms.py                     # WTForms definitions and input validation rules
+├── manage.py                    # CLI management utility (user provisioning & diagnostics)
 ├── models.py                    # SQLAlchemy database schema models & relationships
 ├── requirements.txt             # Pinned Python package dependencies
 └── README.md                    # Project documentation
@@ -419,6 +443,8 @@ Digital-Gram-Panchayat-Python/
 - **`config.py`**: Centralized configuration management using environment variables with safe defaults (secret key, database URI, and file upload paths).
 - **`forms.py`**: WTForms form definitions providing server-side validation for registration, login, profile editing, service creation, and application approval.
 - **`models.py`**: Database schemas using Flask-SQLAlchemy including `User`, `Service`, `Application`, `Notification`, and `AuditLog` models with secure password hashing (`Werkzeug`).
+- **`manage.py`**: Command-line administrative utility providing commands for database initialization (`init-db`), user provisioning (`create-user`), platform statistics (`stats`), and diagnostics (`health-check`).
+- **`tests/test_app.py`**: Automated test suite utilizing Python's built-in `unittest` framework to verify authentication workflows, access control redirects, and model methods.
 - **`templates/`**: Modular HTML files using Jinja2 inheritance (`base.html`) and Bootstrap 5 components for consistent design.
 - **`static/`**: Custom stylesheets and JavaScript to ensure responsive mobile and desktop presentation.
 
@@ -651,6 +677,6 @@ This project is developed and maintained collaboratively as an academic initiati
 | Contributor | Role | Contribution Focus |
 |---|---|---|
 | **[viraj24bce10396](https://github.com/viraj24bce10396)** | Project Lead / Creator | Core architecture, Flask backend implementation, models, authentication, and view templates |
-| **[Anurag Bhushan](https://github.com/viraj24bce10396/Digital-Gram-Panchayat-Python/commits?author=bhushan.anurag22@gmail.com)** | Contributor | Documentation architecture, setup quickstart guides, workflow diagrams, and route references |
+| **[Anurag Bhushan](https://github.com/viraj24bce10396/Digital-Gram-Panchayat-Python/commits?author=bhushan.anurag22@gmail.com)** | Contributor | Backend CLI management utility (`manage.py`), automated test suite (`tests/`), documentation architecture, workflow diagrams, and setup guides |
 
 
