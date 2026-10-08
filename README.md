@@ -45,7 +45,8 @@ This project is developed as a real-world academic solution that demonstrates th
 - [22. Acknowledgements](#22-acknowledgements)
 - [23. License](#23-license)
 - [24. Project Status](#24-project-status)
-- [25. Author](#25-author)
+- [25. Contributing Guidelines](#25-contributing-guidelines)
+- [26. Authors & Contributors](#26-authors--contributors)
 
 ---
 
@@ -617,7 +618,38 @@ Status: Working prototype / academic project
 
 ---
 
-## 25. Author
+## 25. Contributing Guidelines
 
-Digital Gram Panchayat Academic Project
+Contributions are what make the open-source and academic community such an amazing place to learn, inspire, and create. Any contributions you make to enhance the project, improve documentation, or refine workflows are **greatly appreciated**.
+
+If you would like to contribute:
+
+1. **Fork the Repository**
+2. **Create a Feature Branch**:
+   ```bash
+   git checkout -b feature/YourFeatureName
+   ```
+3. **Commit your Changes**:
+   ```bash
+   git commit -m "feat: add feature explanation or implementation"
+   ```
+4. **Push to the Branch**:
+   ```bash
+   git push origin feature/YourFeatureName
+   ```
+5. **Open a Pull Request** describing your changes and benefits.
+
+Please ensure code formatting conforms to PEP 8 standards and new features include relevant documentation updates.
+
+---
+
+## 26. Authors & Contributors
+
+This project is developed and maintained collaboratively as an academic initiative:
+
+| Contributor | Role | Contribution Focus |
+|---|---|---|
+| **[viraj24bce10396](https://github.com/viraj24bce10396)** | Project Lead / Creator | Core architecture, Flask backend implementation, models, authentication, and view templates |
+| **[Anurag Bhushan](https://github.com/viraj24bce10396/Digital-Gram-Panchayat-Python/commits?author=bhushan.anurag22@gmail.com)** | Contributor | Documentation architecture, setup quickstart guides, workflow diagrams, and route references |
+
 
